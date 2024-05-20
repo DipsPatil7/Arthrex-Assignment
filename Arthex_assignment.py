@@ -31,7 +31,7 @@ def find_person(target):
     return next((person for person, friends in candidates.items() if target in friends), target)
 
 # Example input
-start_person = 'A'
+start_person = 'M'
 start_person = find_person(start_person)
 result = gather_friends(start_person)
 print(result)
