@@ -1,1 +1,50 @@
-# Arthrex-Assignment
+**Problem Statement:**
+Arthrex, a leading company, is looking to hire interns to bolster its workforce. To streamline the hiring process and maintain an active pipeline, Arthrex's recruiters need a systematic method for contacting potential candidates. Each intern contacted is asked to provide a list of their classmates, expanding the pool of potential candidates further. However, it's crucial to avoid contacting the same candidate multiple times and ensure that the recruiter exhausts the list of candidates and their classmates.
+
+**Input:**
+- Any character representing the person initially selected for the job.
+
+**Output:**
+- A list of all candidates contacted, including the initial selected person and their classmates.
+
+**Problem Constraints:**
+1. Each person is associated with a list of their classmates.
+2. No candidate should be contacted more than once.
+3. The contacting process continues until either a candidate is hired or the complete list of candidates along with their classmates is exhausted.
+
+**Objective:**
+To Develop an algorithm that efficiently gathers a list of all potential candidates contacted during the hiring process, adhering to the constraints mentioned above. The algorithm should start from the initially selected person and iteratively contact their classmates until the entire list of potential candidates is exhausted.
+
+Solution :
+The best-suited algorithm for this problem is Breadth-First Search (BFS). BFS is ideal because it explores all neighbors at the present depth level before moving on to nodes at the next depth level, ensuring that each candidate and their friends are contacted systematically without duplication.
+
+Data Structure: Use a queue to manage the BFS process.
+Set: Use a set to keep track of candidates who have already been contacted to avoid contacting the same candidate more than once.
+Initialization: Start with the given candidate (selected for the job).
+Process: While the queue is not empty, dequeue the front candidate, add their friends to the queue (if they haven't been contacted yet), and mark them as contacted.
+
+Explanation
+Data Setup: The candidates dictionary contains each candidate along with their friends.
+
+Function gather_candidates_bfs:
+Initialize a set contacted with the start person to keep track of contacted candidates.
+Use a deque queue initialized with the start person for BFS processing.
+While the queue is not empty:
+Dequeue the front candidate (person).
+Add the person to the result list.
+Iterate over the friends of the person from the candidates dictionary.
+If a friend has not been contacted, add the friend to the contacted set and enqueue the friend.
+Return the result list of all contacted candidates.
+
+
+
+Function find_starting_person:
+Uses a generator expression with next to find the person who has the target as a friend, or returns the target itself if not found.
+
+Main Execution:
+Sets the starting person to 'M'.
+Finds the correct starting person using find_starting_person.
+Calls gather_candidates_bfs and prints the result.
+
+
+
