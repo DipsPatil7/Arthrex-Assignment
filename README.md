@@ -26,7 +26,7 @@ Process: While the queue is not empty, dequeue the front candidate, add their fr
 Explanation
 Data Setup: The candidates dictionary contains each candidate along with their friends.
 
-Function gather_candidates_bfs:
+Function gather_friends:
 Initialize a set contacted with the start person to keep track of contacted candidates.
 Use a deque queue initialized with the start person for BFS processing.
 While the queue is not empty:
@@ -38,13 +38,29 @@ Return the result list of all contacted candidates.
 
 
 
-Function find_starting_person:
+Function find_person:
 Uses a generator expression with next to find the person who has the target as a friend, or returns the target itself if not found.
 
 Main Execution:
 Sets the starting person to 'M'.
 Finds the correct starting person using find_starting_person.
-Calls gather_candidates_bfs and prints the result.
+Calls gather_candidates and prints the result.
 
+Testing:
+Testing Approach:
+Each test case is written to verify a specific aspect of the functions under test.
+The expected results are predetermined based on the provided dataset and the logic of the functions.
+The unittest.TestCase class provides assertion methods like assertEqual() to compare the expected output with the actual output of the functions.
+If all assertions pass without raising any exceptions, the test is considered successful.
+The unittest.main() function runs the test suite, executing all test cases and reporting any failures or errors encountered.
 
+Test Cases for find_person Function:
 
+Test Case 1: Checks if the find_person function correctly identifies the person 'A' in a friend's list, returning the friend who has 'A' in their friends.
+Test Case 2: Similar to Test Case 1 but tests for the case where the target person is not in any friend's list, ensuring the function returns the target person itself.
+
+Test Cases for gather_friends Function:
+
+Test Case 1: Tests the functionality of gather_friends starting from person 'A'. It asserts whether the function returns the correct list of contacts, including 'A' and all of 'A's friends and their friends' friends recursively until no new contacts are found.
+Test Case 2: Similar to Test Case 1 but starts from person 'D'. It ensures that the function correctly gathers friends starting from a different person in the dataset.
+Test Case 3: Tests the function starting from person 'Q', ensuring it handles scenarios where a person has no friends and returns only the initial person.
